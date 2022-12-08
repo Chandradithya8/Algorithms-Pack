@@ -1,0 +1,21 @@
+
+signed/unsigned data types
+static 
+struct
+enumeration
+friend
+namespace
+templates
+bit manipulation left/right shift
+
+
+oops 
+inline 
+virtual
+
+memset
+typecasting
+iterator
+
+smart pointers
+opaque pointers
