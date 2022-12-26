@@ -4,7 +4,7 @@ using namespace std;
 // applicable for negative egdes
 // helps for finding negative weight cycles
 
-// applicable only for directed graph
+// applicable for directed and undirected but can find negative cycles only for directed graph
 
 //single source shortest path algorithm
 
