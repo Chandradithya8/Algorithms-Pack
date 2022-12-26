@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// both for directed and undirected
 // multi source shortest path algorithm
 // helps detect negative weight cycles
 
