@@ -2,6 +2,7 @@
 using namespace std;
 
 // not applicable for negative weights
+// both for directed and undirected
 
 // using priority queue - kind of a greedy approach
 // if we use a queue instead of pq then we will be computing for unnecessary paths
