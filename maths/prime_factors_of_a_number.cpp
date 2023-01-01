@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// finding prime factors of a number
 // sqrt(n)
 vector<int> PrimeFactors(int n) {
     vector<int> ans;
