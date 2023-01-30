@@ -19,3 +19,30 @@ iterator
 
 smart pointers
 opaque pointers
+
+
+
+scope resolution operator
+
+1. access the static member in a class
+2. when different class have the same function or variable name during 		  
+	inheritace
+3. declare the function inside the class and define it outside the class
+
+
+virtual function
+
+-> should be accessed via pointer or reference
+-> cannot be static
+
+1. early binding -> function overridden at the compile time (non - virtual functions)
+2. Late binding -> function overridden at the run time (virtual functions)
+
+
+dynamic binding
+message passing
+
+static 
+virtual
+final
+
