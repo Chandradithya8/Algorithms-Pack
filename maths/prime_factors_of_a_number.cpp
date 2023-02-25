@@ -1,3 +1,42 @@
+// Approach 1 - Faster
+#include <bits/stdc++.h>
+using namespace std;
+
+bool prime(long long n) {
+	if(n%2 == 0) return false;
+	if(n == 2) return true;
+	for(long long i=3; i<=sqrt(n); i=i+2) {
+		if(n%i == 0) return false;
+	}
+	return true;
+}
+
+// log(n) * log(n)
+vector<long long> primeFactors(long long n) {
+	vector<long long> all;
+	long long c = 2;
+	while(n > 1) {
+		if(prime(n)) {
+			all.push_back(n);
+			return all;
+		}
+		if(n%c == 0) {
+			n /= c;
+			all.push_back(c);
+		}
+		else c++;
+	}
+	return all;
+}
+
+int main() {
+	vector<long long> all = primeFactors(365657575);
+	for(auto it : all) cout << it << endl;
+}
+
+
+
+// Approach 2
 #include<bits/stdc++.h>
 using namespace std;
 
