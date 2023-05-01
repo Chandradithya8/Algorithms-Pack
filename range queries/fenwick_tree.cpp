@@ -1,64 +1,50 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// summation
-struct fenwick {
-	vector<int> fn;
-	int n;
-	void init(int _n) {
-		this->n = _n+1; // 1 based
-		fn.resize(n, 0);
-	}
-
-	void add(int index, int value) {
-		index++; // 1 based
-		while(index < n) {
-			fn[index] += value;
-			index += (index & (-index)); // add the last set bit
-		}
-	}
-
-	int queryHelper(int index) {
-		index++;
-		int ans = 0;
-		while(index) {
-			ans += fn[index];
-			index -= (index & (-index)); // subtract the last set bit
-		}
-		return ans;
-	}
-
-	int query(int l, int r) {
-		return queryHelper(r) - queryHelper(l-1);
-	}
+struct BIT {
+    vector<int> fn;
+    int n;
+    BIT(int n) {
+        this->n = n;
+        fn.resize(n+1, 0);
+    }
+    void add(int x, int y) {
+        x++;
+        while(x <= n) {
+            fn[x] += y;
+            x += (x & (-x));
+        }
+    }
+    int sum(int x) {
+        x++;
+        long long ans = 0;
+        while(x > 0) {
+            ans += fn[x];
+            x -= (x & (-x));
+        }
+        return ans;
+    }
+    int sum(int l, int r) {
+        return sum(r) - sum(l-1);
+    }
 };
 
 int main() {
-	fenwick tree;
-	int n, q;
-	cin >> n >> q;
-	tree.init(n);
-	vector<int> array(n);
-	for(int i=0; i<n; i++) {
-		cin >> array[i];
-		tree.add(i, array[i]);
-	}
-	for(int i=0; i<q; i++) {
-		int qtype;
-		cin >> qtype;
-		if(qtype == 1) {
-			int index, value;
-			cin >> index >> value;
-			index--;
-			tree.add(index, value - array[index]);
-		}
-		else {
-			int l, r;
-			cin >> l >> r;
-			cout << tree.query(l-1, r-1) << endl;
-		}
-	}
+    int n, m;
+    cin >> n >> m;
+    vector<int> arr(n);
+    BIT bit(n);
+    for(int i=0; i<n; i++) {
+        cin >> arr[i];
+    }
+    for(int i=0; i<n; i++) bit.add(i, arr[i]);
+    for(int i=0; i<m; i++) {
+        int l, r;
+        cin >> l >> r;
+        cout << bit.sum(l-1, r-1) << endl;
+    }
 }
+
 
 /*
 
