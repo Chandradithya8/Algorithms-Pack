@@ -17,7 +17,7 @@ struct BIT {
     }
     int sum(int x) {
         x++;
-        long long ans = 0;
+        int ans = 0;
         while(x > 0) {
             ans += fn[x];
             x -= (x & (-x));
