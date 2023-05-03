@@ -20,7 +20,6 @@ struct SegTreeLazy {
 		st[node] = st[node*2+1] + st[node*2+2];
 	}
 	void update(int start, int end, int node, int& l, int& r, int& value) {
-		if(start > r || end < l) return;
 		// lazy propagate
 		if(lazy[node] != 0) {
 			st[node] += lazy[node] * (end-start+1);
@@ -30,6 +29,7 @@ struct SegTreeLazy {
 			}
 			lazy[node] = 0;
 		}
+		if(start > r || end < l) return;
 		if(start >= l && end <= r) {
 			st[node] += value * (end-start+1);
 			if(start != end) {
@@ -44,7 +44,6 @@ struct SegTreeLazy {
 		st[node] = st[node*2+1] + st[node*2+2];
 	}
 	int query(int start, int end, int node, int& l, int& r) {
-		if(start > r || end < l) return 0;
 		if(lazy[node] != 0) {
 			st[node] += lazy[node] * (end-start+1);
 			if(start != end) {
@@ -53,6 +52,7 @@ struct SegTreeLazy {
 			}
 			lazy[node] = 0;
 		}
+		if(start > r || end < l) return 0;
 		if(start >= l && end <= r) return st[node];
 		int mid = (start + end) / 2;
 		int left = query(start, mid, node*2+1, l, r);
