@@ -1,1 +1,1 @@
-# HackPack
+# Algorithms-Pack
